@@ -1,0 +1,77 @@
+ProjectDescription.txt
+Last updated: 10/27/15
+
+INSPIRATION -------------------------------------------------------------------------------------
+The idea behind this project came from online shopping sites. Oftentimes on a product's page,
+there will be the option to view the item with a 360 degree view.  (A good example is large
+LEGO sets on LEGO's shopping website.)  I wanted to replicate this without needing a professional
+studio, so I thought of building a simple robot that cradles a camera and drives in a circle.
+
+DEVICE BUILDING PROCESS -------------------------------------------------------------------------
+As a gift, I had recieved a LEGO robot ideas book that included a design for a compact drive
+motor (forward motion), and for a steering motor.  This means I just had to focus on a cradle
+for the camera and integrating the large computer brick (COMP) into the robot.  The steering
+portion easily connected to the COMP, and the drive motor was sturdy enough to connect it
+with a few beams.
+
+To deal with the camera, I first put together a few crooked beams for the camera to sit on, 
+just to experiment. That turned out to be perfect, so I then placed vertical supports to hold
+it steady while not blocking the lens.  Then I had to attach it to the main body.  I
+accomplished this by adding a solid base for the cradle to sit on, then added a vertical beam.
+The beam was initially designed to permenently hold the cradle, but I found by adding some L
+shapes to the cradle and by using some long axles, I could move the cradle up and down.
+
+A touch sensor was added to function as a "Go" button.  The end result is a compact, sturdy robot
+that is simple to opperate.  The only downside is that due to the cradle's position, it is
+difficult to get to the COMP's buttons, which is required at startup.  Fortunately, the cradle
+can be removed to make it slightly easier.
+
+PROGRAM BUILDING PROCESS ------------------------------------------------------------------------
+Because the robot is so simple, the program was easy to write.  I wanted the user to be able to
+input a radius of circle for the robot to follow, and how many steps/stops for the robot to make
+when traveling around the circle.  I figured the basic program flow would be:
+  1. Ask user for input
+  2. Perform calculations
+  3. Move one step around the circle at a time until finished.
+
+The only difficult part was figuring out the relationship between the steering motor and the
+radius of the circle it drives in.  I decided to determine this by setting the motor at a set
+angle, letting the robot drive in a circle, and measuring the radius of the circle the robot
+made.  I then plotted these values to find the best-fit line.  I arrived at this equation:
+
+Rotation (degrees) = 1300 * (radius(cm) ^ -0.8700373096)
+*Note: The steering motor does not have 1:1 control of the steering direction. It has 5:1 control,
+which is why the number is so big.
+
+This equation isn't perfect because I realized afterward that I had not been measuring from the
+center of the robot.  The equation also isn't the mathematically correct equation for representing
+vehicular motion in a circle.  The robot tends to lose a few centimeters of distance on the far
+side of where it started, but for my purposes, it works fine.
+
+The distance traveled calculation was a simple 2 * PI * radius / (cm per rotation of drive motor).
+Everything else was simple input handling (lots of looping and error checking), and any flourishes
+I wanted to add.
+
+Please see ProgramDesign.txt for an in-depth explanation of all the functions the robot performs.
+
+REFLECTION ----------------------------------------------------------------------------------------
+The ModelPhotographer certainly wasn't a difficult project to complete, but I still feel it was
+very important.  My strength is not in building physical LEGO robots, but in the programs running
+them.  Up until this project, I had mostly just built programs for robots designed by other people.
+I still used pre-existing components in this project, but I had to solve my own problems as well.
+
+More importantly, the ModelPhotographer is the first LEGO project which I saw entirely from idea to
+creation, to tweaking, all the way to a shippable state.  I have fully documented and fairly well
+designed code, plus a document consolidating all the function descriptions.  I have a user guide.
+I have photos showcasing the design and video of robot running.  And I have a record of the entire
+process, all visible to anyone interested.  I have plenty more ideas that I hope to complete
+to this standard.
+
+RESOURCES -----------------------------------------------------------------------------------------
+LEGO Mindstorms EV3 Robotics Kit (Retail Version) + Home Edition Development Software
+'The LEGO Mindstorms EV3 Idea Book' by Yoshihito Isogawa : Copyright 2015, No Starch Press
+My own personal point-and-shoot Panasonic camera (LUMIX DMC-FH25)
+
+DISCLAMER -----------------------------------------------------------------------------------------
+The LEGO Group, Panasonic, the author of 'The LEGO Mindstorms EV3 Idea Book, nor the publisher do
+not in any way sponsor anything I do or say.  This is my own creation, except where credit is given.
